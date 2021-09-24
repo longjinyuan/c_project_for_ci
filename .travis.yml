@@ -1,0 +1,25 @@
+language: cpp
+sudo: required
+#dist: bionic
+#dist: xenial
+compiler:
+  - gcc
+  - clang
+os:
+  - linux
+#ruby: 2.2.0
+before_install:
+  - echo $LANG
+  - echo $LC_ALL
+  - ./scripts/dependencies.sh
+script:
+  - mkdir build && cd build && cmake .. && make
+#after_success:
+#  - ./scripts/build_support.sh archive_codedb
+branches:
+  only:
+    - master
+#    - "/^v\\d+\\./"
+#env:
+#  global:
+#    - LANG="en_US.UTF-8"
