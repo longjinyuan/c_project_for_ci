@@ -14,11 +14,10 @@ before_install:
   - ./scripts/dependencies.sh
 script:
   - mkdir build && cd build && cmake .. && make
+#install:
+#  - mkdir build && cd build && cmake .. && make
 #after_success:
 #  - ./scripts/build_support.sh archive_codedb
-install:
-  - cmake
-  - yum
 branches:
   only:
     - master
