@@ -1,5 +1,5 @@
 #!/bin/sh
 
-yum install -y cmake
+#yum install -y cmake
 
 

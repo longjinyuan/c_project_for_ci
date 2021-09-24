@@ -1,11 +1,9 @@
 language: cpp
 env:
   matrix:
-    - OS_TYPE=centos OS_VERSION=6
-    - OS_TYPE=centos OS_VERSION=7
     - OS_TYPE=centos OS_VERSION=8
 #dist: bionic
-dist: xenial
+#dist: xenial
 compiler:
   - gcc
   - clang
@@ -13,13 +11,13 @@ os:
   - linux
 #ruby: 2.2.0
 before_install:
-  - echo $LANG
-  - echo $LC_ALL
   - ./scripts/dependencies.sh
 script:
   - mkdir build && cd build && cmake .. && make
 #after_success:
 #  - ./scripts/build_support.sh archive_codedb
+install:
+  - cmake
 branches:
   only:
     - master
