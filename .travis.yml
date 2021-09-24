@@ -1,7 +1,7 @@
 language: cpp
-sudo: required
+#sudo: required
 #dist: bionic
-#dist: xenial
+dist: xenial
 compiler:
   - gcc
   - clang
