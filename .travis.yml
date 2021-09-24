@@ -1,5 +1,5 @@
 language: cpp
-sudo: true
+#sudo: true
 env:
   jobs:
     - OS_TYPE=centos OS_VERSION=8
