@@ -7,7 +7,6 @@ env:
 dist: xenial
 compiler:
   - gcc
-  - clang
 os:
   - linux
 #ruby: 2.2.0
@@ -34,14 +33,18 @@ install:
 #  - ls
 
 script:
-  - mkdir build && cd build && cmake .. && make
+  - mkdir build
+  - cd build
+  - cmake ..
+  - make
+  - cd ..
 
 #构建成功后，把部署所需的文件都拷贝到 dist 文件夹下
 after_success:
   - pwd
   - ls
   - mkdir dist
-  - cp c_project_for_ci dist/
+  - cp build/c_project_for_ci dist/
 
 #afterfailure:
 #  - pwd
