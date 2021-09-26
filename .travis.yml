@@ -38,13 +38,16 @@ script:
 
 #构建成功后，把部署所需的文件都拷贝到 dist 文件夹下
 after_success:
+  - pwd
+  - ls
   - mkdir dist
-  - cp build/c_project_for_ci dist/
+  - cp c_project_for_ci dist/
 
 #afterfailure:
-#  - ls
+#  - pwd
 
 before_deploy:
+  - pwd
   - ls
 
 #把 dist 文件推送到 github DEPLOY-PROD 分支下
@@ -61,7 +64,9 @@ deploy:
 
 
 after_deploy:
+  - pwd
   - ls
 
 after_script:
+  - pwd
   - ls
