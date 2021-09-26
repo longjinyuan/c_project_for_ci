@@ -11,18 +11,57 @@ compiler:
 os:
   - linux
 #ruby: 2.2.0
-before_install:
-  - ./scripts/dependencies.sh
-script:
-  - mkdir build && cd build && cmake .. && make
-#install:
-#  - mkdir build && cd build && cmake .. && make
-#after_success:
-#  - ./scripts/build_support.sh archive_codedb
+
+#指定构建分支
 branches:
   only:
     - master
-#    - "/^v\\d+\\./"
+
 #env:
 #  global:
 #    - LANG="en_US.UTF-8"
+
+
+
+before_install:
+  - ./scripts/dependencies.sh
+
+#安装依赖
+install:
+  - echo "install"
+
+#before_script:
+#  - ls
+
+script:
+  - mkdir build && cd build && cmake .. && make
+
+#构建成功后，把部署所需的文件都拷贝到 dist 文件夹下
+after_success:
+  - mkdir dist
+  - cp build/c_project_for_ci dist/
+
+#afterfailure:
+#  - ls
+
+before_deploy:
+  - ls
+
+#把 dist 文件推送到 github DEPLOY-PROD 分支下
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GH_TOKEN
+  keep_history: true
+  target_branch: DEPLOY-PROD
+  committer_from_gh: true
+  on:
+    branch: master
+  local_dir: dist
+
+
+after_deploy:
+  - ls
+
+after_script:
+  - ls

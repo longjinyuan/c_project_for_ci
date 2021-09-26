@@ -13,6 +13,6 @@ add_executable (c_project_for_ci ${srcs})
 
 #target_link_libraries (c_project_for_ci dl pthread m z)
 
-# add the install targets
-install (DIRECTORY bin/ DESTINATION /data/app/c_project_for_ci/bin)
-install (DIRECTORY etc/ DESTINATION /data/app/c_project_for_ci/etc)
+## add the install targets
+#install (DIRECTORY bin/ DESTINATION /data/app/c_project_for_ci/bin)
+#install (DIRECTORY etc/ DESTINATION /data/app/c_project_for_ci/etc)
