@@ -15,15 +15,19 @@ os:
 branches:
   only:
     - master
+    - develop
 
 #env:
 #  global:
 #    - LANG="en_US.UTF-8"
 
-
+#addons:
+#  apt:
+#    update: true
 
 before_install:
-  - ./scripts/dependencies.sh
+  - sudo apt-get update
+  - sudo apt-get -y install libxml2-dev
 
 #安装依赖
 install:
@@ -51,25 +55,21 @@ after_success:
 
 before_deploy:
   - pwd
-  - ls
 
-#把 dist 文件推送到 github DEPLOY-PROD 分支下
 deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: $GH_TOKEN
-  keep_history: true
-  target_branch: DEPLOY-PROD
-  committer_from_gh: true
-  on:
-    branch: master
-  local_dir: dist
-
+  # deploy develop to the staging environment
+  - provider: script
+    script: bash scripts/deploy.sh staging
+    on:
+      branch: develop
+  # deploy master to production
+  - provider: script
+    script: bash scripts/deploy.sh production
+    on:
+      branch: master
 
 after_deploy:
   - pwd
-  - ls
 
 after_script:
   - pwd
-  - ls
