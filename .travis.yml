@@ -37,6 +37,7 @@ install:
 #  - ls
 
 script:
+  - cmake --version
   - cmake -B build
   - cmake --build build
 #  - mkdir build && cd build && cmake .. && make && cd ..
