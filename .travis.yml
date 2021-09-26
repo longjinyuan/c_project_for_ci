@@ -1,14 +1,14 @@
 language: cpp
-#sudo: true
-env:
-  jobs:
-    - OS_TYPE=centos OS_VERSION=8
-#dist: bionic
-dist: xenial
-compiler:
-  - gcc
+
 os:
   - linux
+
+#dist: bionic
+dist: xenial
+
+compiler:
+  - gcc
+
 #ruby: 2.2.0
 
 #指定构建分支
