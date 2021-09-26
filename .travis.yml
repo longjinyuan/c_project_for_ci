@@ -37,9 +37,8 @@ install:
 #  - ls
 
 script:
-  - mkdir build
-  - cmake -B build/
-  - cmake --build build/
+  - cmake -B build
+  - cmake --build build
 #  - mkdir build && cd build && cmake .. && make && cd ..
 
 #构建成功后，把部署所需的文件都拷贝到 dist 文件夹下
