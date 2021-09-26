@@ -44,7 +44,7 @@ after_success:
   - pwd
   - ls
   - mkdir dist
-  - cp c_project_for_ci dist/
+  - cp build/c_project_for_ci dist/
 
 #afterfailure:
 #  - pwd
